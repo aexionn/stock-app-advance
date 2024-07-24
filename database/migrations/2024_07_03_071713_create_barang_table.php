@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nm_barang');
             $table->text('deskripsi')->nullable();
             $table->decimal('harga', 8, 2);
-            $table->foreignUuid('id_gudang')->nullable()->constrained('gudang', 'id_gudang')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
             $table->primary('id_barang');
