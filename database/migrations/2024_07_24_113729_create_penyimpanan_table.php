@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('kode');
             $table->foreignUuid('id_barang')->nullable()->constrained('barang', 'id_barang')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignUuid('id_gudang')->nullable()->constrained('gudang', 'id_gudang')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('nm_supervisor');
             $table->integer('jumlah_barang');
             $table->timestamps();
             $table->softDeletes();
