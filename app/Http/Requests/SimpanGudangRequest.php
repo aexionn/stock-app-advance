@@ -25,7 +25,7 @@ class SimpanGudangRequest extends FormRequest
             'nm_tempat' => ['bail', 'required', 'unique:gudang,nm_tempat', 'min:5', 'max:255'],
             'lokasi' => ['required', 'string', 'min:10', 'max:255'],
             'nm_supervisor' => ['required', 'min:4', 'max:255'],
-            'kapasitas' => ['required', 'numeric', 'min_digits:4', 'max_digits:11']
+            'kapasitas' => ['required', 'numeric', 'min:0', 'min_digits:4', 'max_digits:11']
         ];
     }
 

@@ -30,9 +30,10 @@ class SimpanBarangRequest extends FormRequest
     {
         return [
             'nm_barang' => ['bail', 'required', 'unique:barang,nm_barang', 'min:3', 'max:255'],
+            'stok_awal' => ['required', 'numeric', 'min:1', 'min_digits:1', 'max_digits:11'],
+            'stok_terbaru' => ['required', 'numeric', 'min:1', 'min_digits:1', 'max_digits:11'],
             'deskripsi' => ['required', 'string', 'min:5', 'max:255'],
-            'harga' => ['required', 'numeric' ,'min_digits:6', 'max_digits:11'],
-            'id_gudang' => ['nullable', 'string']
+            'harga' => ['required', 'decimal:2' , 'between:1000,99999999'],
         ];
     }
 
@@ -48,13 +49,20 @@ class SimpanBarangRequest extends FormRequest
             'nm_barang.unique' => 'Nama Barang Sudah ada, Tips: berikan penanda seperti huruf maupun angka dibelakang nama barang.',
             'nm_barang.min' => 'Nama Barang Harus lebih dari 3 Huruf.',
             'nm_barang.max' => 'Nama Barang Tidak dapat lebih dari 255 Huruf.',
+            'stok_awal.required' => 'Stok Awal Harus diisi.',
+            'stok_awal.numeric' => 'Stok Awal Harus berupa angka.',
+            'stok_awal.min_digits' => 'Stok Awal Harus lebih dari 1 Angka.',
+            'stok_awal.max_digits' => 'Stok Awal Tidak dapat lebih dari 11 Angka.',
+            'stok_terbaru.required' => 'Stok Terbaru Harus diisi.',
+            'stok_terbaru.numeric' => 'Stok Terbaru Harus berupa angka.',
+            'stok_terbaru.min_digits' => 'Stok Terbaru Harus lebih dari 1 Angka.',
+            'stok_terbaru.max_digits' => 'Stok Terbaru Tidak dapat lebih dari 11 Angka.',
             'deskripsi.required' => 'Deskripsi Barang Harus diisi.',
             'deskripsi.min' => 'Deskripsi Barang Harus lebih dari 5 Huruf.',
             'deskripsi.max' => 'Deskripsi Barang Tidak dapat lebih dari 255 Huruf.',
             'harga.required' => 'Harga Barang Harus diisi.',
-            'harga.numeric' => 'Harga Barang Harus berupa angka.',
-            'harga.min_digits' => 'Harga Barang Harus lebih dari 6 Angka (Termasuk dibelakang titik).',
-            'harga.max_digits' => 'Harga Barang Tidak dapat lebih dari 11 Angka (Termasuk dibelakang titik).',
+            'harga.decimal' => 'Harga Barang Harus berupa decimal.',
+            'harga.between' => 'Harga Barang Harus diantara 1000 - 99999999.'
         ];
     }
 }

@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gudang', function (Blueprint $table) {
-            $table->uuid('id_gudang');
-            $table->string('nm_tempat');
-            $table->string('lokasi');
-            $table->string('nm_supervisor');
-            $table->integer('kapasitas');
+        Schema::create('mutasi', function (Blueprint $table) {
+            $table->uuid('id_mutasi');
+            $table->foreignUuid('id_penyimpanan')->nullable()->constrained('penyimpanan', 'id_penyimpanan')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('stok_bertambah')->default(12);
+            $table->integer('stok_berkurang')->default(12);
             $table->timestamp('ditambahkan_pada')->useCurrent();
             $table->timestamp('diubah_pada')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->softDeletes();
-            $table->primary('id_gudang');
+            $table->primary('id_mutasi');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gudang');
+        Schema::dropIfExists('mutasi');
     }
 };

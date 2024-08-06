@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\Gudang;
+use App\Models\Barang;
 
 class HomeController extends Controller
 {
     public function index() : View {
-        $gudang = Gudang::with('barang')->get();
-        return view('HomeView', ['title' => 'Beranda', 'Detail' => $gudang]);
+        $barang = Barang::with('gudang')->get();
+        // dd(Barang::with('gudang')->toSql());
+        return view('HomeView', ['title' => 'Beranda', 'Detail' => $barang]);
     }
 }

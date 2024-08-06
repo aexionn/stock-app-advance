@@ -20,7 +20,9 @@ class GudangFactory extends Factory
             'nm_tempat' => 'gd-'.fake()->streetName(),
             'lokasi' => fake()->address(),
             'nm_supervisor' => fake()->name(),
-            'kapasitas' => fake()->randomNumber(5, true)
+            'kapasitas' => fake()->randomNumber(5, true),
+            'ditambahkan_pada' => now(),
+            'diubah_pada' => now(),
         ];
     }
 }

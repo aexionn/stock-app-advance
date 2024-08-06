@@ -11,8 +11,8 @@ use App\Models\{Barang, Gudang};
 class BarangController extends Controller
 {
     public function index() : View {
-        $id = Barang::with('gudang')->get();
-        return view('Barang', ['title' => 'Data Barang', 'Barang' => $id]);
+        $barang = Barang::all();
+        return view('Barang', ['title' => 'Data Barang', 'Barang' => $barang]);
     }
 
     public function tampilUbah($id) : View | array {

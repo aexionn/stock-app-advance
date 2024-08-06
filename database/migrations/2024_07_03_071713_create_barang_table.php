@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('barang', function (Blueprint $table) {
             $table->uuid('id_barang');
             $table->string('nm_barang');
+            $table->integer('stok_awal');
+            $table->integer('stok_terbaru');
             $table->text('deskripsi')->nullable();
-            $table->decimal('harga', 8, 2);
-            $table->timestamps();
+            $table->decimal('harga', 8, 2);            
+            $table->timestamp('ditambahkan_pada')->useCurrent();
+            $table->timestamp('diubah_pada')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();
             $table->primary('id_barang');
         });

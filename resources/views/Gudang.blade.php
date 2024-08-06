@@ -42,7 +42,7 @@
                                         {{ $tempat['kapasitas'] }}
                                     </td>
                                     <td class="p-4 text-sm text-black">
-                                        {{ $tempat['created_at'] }}
+                                        {{ $tempat['ditambahkan_pada'] }}
                                     </td>
                                     <td class="">
                                         <a href="/save/gudang/{{ $tempat['id_gudang'] }}" class="inline-block " title="Ubah">

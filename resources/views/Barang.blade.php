@@ -8,7 +8,8 @@
                             <th class="p-4 text-left text-sm font-medium text-white">Nama Barang</th>
                             <th class="p-4 text-left text-sm font-medium text-white">Deskripsi</th>
                             <th class="p-4 text-left text-sm font-medium text-white">Harga</th>
-                            <th class="p-4 text-left text-sm font-medium text-white">Gudang</th>
+                            <th class="p-4 text-left text-sm font-medium text-white">Stok Awal</th>
+                            <th class="p-4 text-left text-sm font-medium text-white">Stok Baru</th>
                             <th class="p-4 text-left text-sm font-medium text-white">Tersimpan Sejak</th>
                             <th class="p-4 text-left text-sm font-medium text-white">Aksi</th>
                         </tr>
@@ -20,8 +21,9 @@
                                 <td class="p-4 text-sm text-black">{{ $item['nm_barang'] }}</td>
                                 <td class="p-4 text-sm text-black">{{ $item['deskripsi'] }}</td>
                                 <td class="p-4 text-sm text-black">{{ $item['harga'] }}</td>
-                                <td class="p-4 text-sm text-black">{{ $item->gudang->nm_tempat ?? ''}}</td>
-                                <td class="p-4 text-sm text-black">{{ $item['created_at'] }}</td>
+                                <td class="p-4 text-sm text-black">{{ $item['stok_awal'] }}</td>
+                                <td class="p-4 text-sm text-black">{{ $item['stok_terbaru'] }}</td>
+                                <td class="p-4 text-sm text-black">{{ $item['ditambahkan_pada'] }}</td>
                                 <td class="flex items-center">
                                     <a href="/save/barang/{{ $item['id_barang'] }}" class="inline-block" title="Ubah">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700" viewBox="0 0 348.882 348.882">

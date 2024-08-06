@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('kode');
             $table->foreignUuid('id_barang')->nullable()->constrained('barang', 'id_barang')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignUuid('id_gudang')->nullable()->constrained('gudang', 'id_gudang')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('jumlah_barang');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->integer('jumlah_barang')->default(12);
+            $table->timestamp('ditambahkan_pada')->useCurrent();
+            $table->timestamp('diubah_pada')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->primary('id_penyimpanan');
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('penyimpanan');
     }
 };
